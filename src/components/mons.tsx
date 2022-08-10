@@ -4,7 +4,7 @@ import './mons.css';
 function Mon() {
     const [name, setName] = useState('');
     const [imgLink, setImgLink] = useState('');
-    const [moves,setMoves] = useState(['','','','']);
+    const [moves,setMoves] = useState('');
     function getValue(id: string){
        let element = document.getElementById(id) as HTMLInputElement | null;
        if (element != null){
@@ -26,16 +26,17 @@ function Mon() {
         setName(data.species.name)
         setImgLink(data.sprites.front_default)
         let length = data.moves.length;
-        let array = [0,0,0,0]
+        let array = [0]
         let i=0
-        while (i<4){
+        while (i<1){
             let placeholder = Math.round(Math.random() * length);
             if (!array.includes(placeholder)){
                 array[i] = placeholder;
                 i++;
             }
         }
-        let movesList = [data.moves[array[0]], data.moves[array[1]], data.moves[array[2]], data.moves[array[3]]];
+        // let movesList = [data.moves[array[0]], data.moves[array[1]], data.moves[array[2]], data.moves[array[3]]];
+        let movesList = data.moves[array[0]].move.name;
         setMoves(movesList);
     }
 
@@ -48,7 +49,7 @@ function Mon() {
         <div className='info' id='info'>
             {name}
             <img src= {imgLink} alt="" />
-                {moves.map(move => <div>move</div>)}
+             {moves}
         </div>
         </div>
     );
