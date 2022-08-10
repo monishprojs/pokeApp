@@ -1,9 +1,7 @@
 import './mons.css';
 
 function Mon() {
-    let name: string = "";
     let imgSrc: string = ""
-
 
     function getValue(id: string){
        let element = document.getElementById(id) as HTMLInputElement | null;
@@ -15,11 +13,18 @@ function Mon() {
   function getData(){
       let mon = getValue("name");
       fetch("https://pokeapi.co/api/v2/pokemon/"+mon)
-          .then((response) => response.json())
-          .then((data) => {assignValues(data)});
+        .then((response) => response.json())
+          .then((data) => {
+              assignValues(data)
+          })
+
           
     function assignValues(data: any){
-        name = data.name;
+        let nameSection = document.getElementById('name');
+        if (nameSection != null){
+            nameSection.innerHTML = data.species.name;
+            console.log(data.species.url);
+        }
     }
 
   }
@@ -28,8 +33,8 @@ function Mon() {
         <div>
         <input type="text" id="name"/>
         <button onClick={getData}>yo</button>
-        <div className='info'>
-            Name: {name}
+        <div className='info' id='info'>
+            <p id = 'name'></p>
             <img src= {imgSrc} alt="" />
         </div>
         </div>
