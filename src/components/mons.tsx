@@ -1,3 +1,4 @@
+import './mons.css';
 
 function Mon() {
 
