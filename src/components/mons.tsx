@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import './mons.css';
 
 function Mon() {
     let imgSrc: string = ""
-
+    const [name, setName] = useState('');
     function getValue(id: string){
        let element = document.getElementById(id) as HTMLInputElement | null;
        if (element != null){
@@ -20,11 +21,7 @@ function Mon() {
 
           
     function assignValues(data: any){
-        let nameSection = document.getElementById('name');
-        if (nameSection != null){
-            nameSection.innerHTML = data.species.name;
-            console.log(data.species.url);
-        }
+        setName(name => data.species.name)
     }
 
   }
@@ -34,7 +31,7 @@ function Mon() {
         <input type="text" id="name"/>
         <button onClick={getData}>yo</button>
         <div className='info' id='info'>
-            <p id = 'name'></p>
+            {name}
             <img src= {imgSrc} alt="" />
         </div>
         </div>
