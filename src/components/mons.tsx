@@ -58,7 +58,6 @@ function Mon() {
                 i++;
             }
         }
-        // let movesList = [data.moves[array[0]], data.moves[array[1]], data.moves[array[2]], data.moves[array[3]]];
         let moves0= data.moves[array[0]].move.name
         setMove0(moves0);
 
@@ -75,22 +74,28 @@ function Mon() {
   }
 
     return (
-        <div>
-        <input type="text" id="name"/>
-        <button onClick={getData}>yo</button>
+       <div className='container'>
         <div className='info' id='info'>
-            {name}
-            <img src= {imgLink} alt="" />
             <div>
+                    <input type="text" id="name" />
+                    <button onClick={getData}>yo</button>
+            </div>
+            <div>
+                    <img src={imgLink} alt="" />
+            </div>
+            <div>
+            {name}
+                </div>
+            <div id="move0">
                 {move0}
             </div>
-            <div>
+                <div id="move1">
                 {move1}
             </div>
-            <div>
+                <div id="move2">
                 {move2}
             </div>
-            <div>
+                <div id="move3">
                 {move3}
             </div>
              

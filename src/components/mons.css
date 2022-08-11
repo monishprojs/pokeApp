@@ -1,3 +1,15 @@
 body {
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+}
+
+
+.info {
+    margin-top: 25vh;
+    padding-top: 5%;
     text-align: center;
+    background-color: white;
+    width: 80vw;
+    height: 50vh;
 }
