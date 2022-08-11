@@ -6,11 +6,29 @@ body {
 
 
 .info {
-    margin-top: 25vh;
+    margin-top: 15vh;
     padding-top: 5%;
     text-align: center;
-    background-color: black;
+    background-color: lightblue;
     color: white;
-    width: 80vw;
-    height: 50vh;
+    width: 50vw;
+    height: 70vh;
+    border-style: solid;
+    border-radius: 1px;
+    border-color: black;
+}
+
+.type {
+    border-style: solid;
+    border-radius: 1px;
+    border-color: black;
+    width: fit-content;
+    display: none;
+    font-family: Miltonian;
+    padding: 5px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
 }
