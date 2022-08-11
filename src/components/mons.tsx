@@ -24,7 +24,10 @@ function Mon() {
     };
     const [name, setName] = useState('');
     const [imgLink, setImgLink] = useState('');
-    const [moves,setMoves] = useState('');
+    const [move0,setMove0] = useState('');
+    const [move1, setMove1] = useState('');
+    const [move2, setMove2] = useState('');
+    const [move3, setMove3] = useState('');
     function getValue(id: string){
        let element = document.getElementById(id) as HTMLInputElement | null;
        if (element != null){
@@ -48,7 +51,7 @@ function Mon() {
         let length = data.moves.length;
         let array = [0]
         let i=0
-        while (i<1){
+        while (i<4){
             let placeholder = Math.round(Math.random() * length);
             if (!array.includes(placeholder)){
                 array[i] = placeholder;
@@ -56,8 +59,17 @@ function Mon() {
             }
         }
         // let movesList = [data.moves[array[0]], data.moves[array[1]], data.moves[array[2]], data.moves[array[3]]];
-        let movesList = data.moves[array[0]].move.name;
-        setMoves(movesList);
+        let moves0= data.moves[array[0]].move.name
+        setMove0(moves0);
+
+        let moves1 = data.moves[array[1]].move.name
+        setMove1(moves1);
+
+        let moves2 = data.moves[array[2]].move.name
+        setMove2(moves2);
+
+        let moves3 = data.moves[array[3]].move.name
+        setMove3(moves3);
     }
 
   }
@@ -69,7 +81,19 @@ function Mon() {
         <div className='info' id='info'>
             {name}
             <img src= {imgLink} alt="" />
-             {moves}
+            <div>
+                {move0}
+            </div>
+            <div>
+                {move1}
+            </div>
+            <div>
+                {move2}
+            </div>
+            <div>
+                {move3}
+            </div>
+             
         </div>
         </div>
     );
