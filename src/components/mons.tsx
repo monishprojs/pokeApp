@@ -47,7 +47,6 @@ function Mon() {
         .then((response) => response.json())
           .then((data) => {
               assignValues(data)
-              console.log(data)
           })
 
           
@@ -106,7 +105,6 @@ function Mon() {
             .then((response) => response.json())
             .then((data) => {
                 assignValues1(data)
-                console.log(data)
             })
     }
 
