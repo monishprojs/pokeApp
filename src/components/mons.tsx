@@ -52,8 +52,16 @@ function Mon() {
         setName(data.species.name)
         setImgLink(data.sprites.front_default)
         setType0(data.types[0].type.name)
+        let info = document.getElementById("info");
+        let bc: string= data.types[0].type.name;
+        if (info != null){
+            info.style.backgroundColor = colors["normal"];
+        }
         if (data.types.length === 2){
             setType1(data.types[1].type.name)
+        }
+        else{
+            setType1('')
         }
         let length = data.moves.length;
         let array = [0]
@@ -90,7 +98,18 @@ function Mon() {
     }
 
     function assignValues1(data: any){
-        setFlavor(data.flavor_text_entries[0].flavor_text)
+        let isEn = false;
+        let i: number =0;
+        while (isEn === false){
+            if (data.flavor_text_entries[i].language.name === "en"){
+                setFlavor(data.flavor_text_entries[i].flavor_text)
+                isEn = true;
+            }
+            else{
+                isEn = false
+                i++
+        }
+        }
     }
 
   }
