@@ -22,6 +22,28 @@ function Mon() {
         steel: '#B7B7CE',
         fairy: '#D685AD',
     };
+
+    let myMap = new Map<string, string>([
+        ["normal", '#A8A77A'],
+        ["fire", '#EE8130'],
+        ["water", '#6390F0'],
+        ["electric", '#F7D02C'],
+        ["grass", '#7AC74C'],
+        ["ice", '#96D9D6'],
+        ["fighting", '#C22E28'],
+        ["poison", '#A33EA1'],
+        ["ground", '#E2BF65'],
+        ["flying", '#A98FF3'],
+        ["psychic", '#F95587'],
+        ["bug", '#A6B91A'],
+        ["rock", '#B6A136'],
+        ["ghost", '#735797'],
+        ["dragon", '#6F35FC'],
+        ["dark", '#705746'],
+        ["steel", '#B7B7CE'],
+        ["fairy", '#D685AD'],
+    ]);
+
     const [name, setName] = useState('');
     const [imgLink, setImgLink] = useState('');
     const [move0,setMove0] = useState('');
@@ -31,6 +53,7 @@ function Mon() {
     const [type0, setType0] = useState('');
     const [type1, setType1] = useState('');
     const [flavor, setFlavor] = useState('');
+
     function getValue(id: string){
        let element = document.getElementById(id) as HTMLInputElement | null;
        if (element != null){
@@ -52,10 +75,10 @@ function Mon() {
         setName(data.species.name)
         setImgLink(data.sprites.front_default)
         setType0(data.types[0].type.name)
-        let info = document.getElementById("info");
-        let bc: string= data.types[0].type.name;
-        if (info != null){
-            info.style.backgroundColor = colors["normal"];
+        let body = document.querySelector("body");
+        if (body != null){
+            let bc: string = data.types[0].type.name;
+            body.style.backgroundColor = myMap.get(bc)!;
         }
         if (data.types.length === 2){
             setType1(data.types[1].type.name)
