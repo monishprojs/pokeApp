@@ -57,7 +57,7 @@ function Mon() {
             setShiny("")
         }
         else{
-            setImgLink(data.sprites.shiny_default)
+            setImgLink(data.sprites.front_shiny)
             setShiny("You found a shiny!")
         }
 
@@ -65,12 +65,12 @@ function Mon() {
         let body = document.querySelector("body");
         let info = document.getElementById("info")
         if (body != null){
-            body.style.backgroundColor = colorsMap.get(type0)!;
+            body.style.backgroundColor = colorsMap.get(data.types[0].type.name)!;
         }
         if (data.types.length === 2){
             setType1(data.types[1].type.name)
             if (info != null){
-                info.style.backgroundColor = colorsMap.get(type1)!;
+                info.style.backgroundColor = colorsMap.get(data.types[1].type.name)!;
             }
         }
         else{

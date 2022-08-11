@@ -9,7 +9,8 @@ body {
     margin-top: 25vh;
     padding-top: 5%;
     text-align: center;
-    background-color: white;
+    background-color: black;
+    color: white;
     width: 80vw;
     height: 50vh;
 }
