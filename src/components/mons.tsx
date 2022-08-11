@@ -2,28 +2,8 @@ import { useState } from 'react';
 import './mons.css';
 
 function Mon() {
-    const colors = {
-        normal: '#A8A77A',
-        fire: '#EE8130',
-        water: '#6390F0',
-        electric: '#F7D02C',
-        grass: '#7AC74C',
-        ice: '#96D9D6',
-        fighting: '#C22E28',
-        poison: '#A33EA1',
-        ground: '#E2BF65',
-        flying: '#A98FF3',
-        psychic: '#F95587',
-        bug: '#A6B91A',
-        rock: '#B6A136',
-        ghost: '#735797',
-        dragon: '#6F35FC',
-        dark: '#705746',
-        steel: '#B7B7CE',
-        fairy: '#D685AD',
-    };
 
-    let myMap = new Map<string, string>([
+    let colorsMap = new Map<string, string>([
         ["normal", '#A8A77A'],
         ["fire", '#EE8130'],
         ["water", '#6390F0'],
@@ -61,8 +41,7 @@ function Mon() {
        }
     }
 
-  function getData(){
-      let mon = getValue("name");
+  function getData(mon: string){
       fetch("https://pokeapi.co/api/v2/pokemon/"+mon)
         .then((response) => response.json())
           .then((data) => {
@@ -78,7 +57,7 @@ function Mon() {
         let body = document.querySelector("body");
         if (body != null){
             let bc: string = data.types[0].type.name;
-            body.style.backgroundColor = myMap.get(bc)!;
+            body.style.backgroundColor = colorsMap.get(bc)!;
         }
         if (data.types.length === 2){
             setType1(data.types[1].type.name)
@@ -107,11 +86,10 @@ function Mon() {
 
         let moves3 = data.moves[array[3]].move.name
         setMove3(moves3);
-        getData1();
+        getData1(getValue("name")!);
     }
 
-    function getData1(){
-        let mon = getValue("name");
+    function getData1(mon: string){
         fetch("https://pokeapi.co/api/v2/pokemon-species/" + mon + "/")
             .then((response) => response.json())
             .then((data) => {
@@ -142,7 +120,7 @@ function Mon() {
         <div className='info' id='info'>
             <div>
                     <input type="text" id="name" />
-                    <button onClick={getData}>yo</button>
+                    <button onClick={() => getData(getValue("name")!)}>yo</button>
             </div>
             <div>
                     <img src={imgLink} alt="" />
