@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './mons.css';
 
 function Mon() {
@@ -144,6 +144,10 @@ function Mon() {
             }
         }
     }
+
+    useEffect(() => {
+        randomSearch();
+    }, [])
 
     return (
         <div className='container'>
