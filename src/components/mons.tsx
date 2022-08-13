@@ -36,7 +36,7 @@ function Mon() {
     const [type0, setType0] = useState('');
     const [type1, setType1] = useState('');
     const [flavor, setFlavor] = useState('');
-
+    let random: string = '';
 
     function randomId() {
         let random = Math.round(Math.random() * 905)
@@ -44,9 +44,8 @@ function Mon() {
     }
 
     function randomSearch() {
-        let random: string = randomId();
-        getData(random);
-        getData1(random);
+        let random = randomId();
+        getData(random, true);
     }
 
     function getValue(id: string) {
@@ -56,11 +55,11 @@ function Mon() {
         }
     }
 
-    function getData(mon: string) {
+    function getData(mon: string, isRandom: boolean) {
         fetch("https://pokeapi.co/api/v2/pokemon/" + mon + "/")
             .then((response) => response.json())
             .then((data) => {
-                assignValues(data)
+                assignValues(data, isRandom)
             })
     }
 
@@ -73,7 +72,7 @@ function Mon() {
     }
 
 
-    function assignValues(data: any) {
+    function assignValues(data: any, isRandom: boolean) {
         setName(data.species.name)
         setImgLink(data['sprites']['other']['home']['front_default'])
         setType0(data.types[0].type.name)
@@ -129,8 +128,12 @@ function Mon() {
         let moves3 = data.moves[array[3]].move.name
         setMove3(moves3);
         assignMoves(moves3, "3");
-
-        getData1(getValue("name")!);
+        if (isRandom === true) {
+            getData1(random)
+        }
+        else {
+            getData1(getValue("name")!);
+        }
     }
 
 
@@ -194,7 +197,7 @@ function Mon() {
             <div className='info' id='info'>
                 <div>
                     <input type="text" id="name" />
-                    <button onClick={() => getData(getValue("name")!)}>Search</button>
+                    <button onClick={() => getData(getValue("name")!, false)}>Search</button>
                     <button onClick={() => randomSearch()}>Random</button>
                 </div>
                 <div>
