@@ -33,7 +33,6 @@ function Mon() {
     const [type0, setType0] = useState('');
     const [type1, setType1] = useState('');
     const [flavor, setFlavor] = useState('');
-    const [isShiny, setShiny] = useState('');
 
     function randomId() {
         let random = Math.round(Math.random() * 905)
@@ -72,15 +71,7 @@ function Mon() {
 
     function assignValues(data: any) {
         setName(data.species.name)
-        if (Math.round(Math.random() * 10) !== 1) {
-            setImgLink(data.sprites.front_default)
-            setShiny("")
-        }
-        else {
-            setImgLink(data.sprites.front_shiny)
-            setShiny("You found a shiny!")
-        }
-
+        setImgLink(data['sprites']['other']['official-artwork']['front_default'])
         setType0(data.types[0].type.name)
         let body = document.querySelector("body");
         let info = document.getElementById("info")
@@ -102,7 +93,7 @@ function Mon() {
         else {
             setType1('')
             if (info != null && type1 != null) {
-                info.style.backgroundColor = colorsMap.get(data.types[0].type.name)!;
+                info.style.backgroundColor = colorsMap.get("fire")!;
                 type1.style.display = "none";
             }
         }
@@ -199,9 +190,6 @@ function Mon() {
                     <input type="text" id="name" />
                     <button onClick={() => getData(getValue("name")!)}>Search</button>
                     <button onClick={() => randomSearch()}>Random</button>
-                </div>
-                <div>
-                    {isShiny}
                 </div>
                 <div className='img'>
                     <img src={imgLink} alt="" />
