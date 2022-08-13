@@ -36,7 +36,7 @@ function Mon() {
     const [type0, setType0] = useState('');
     const [type1, setType1] = useState('');
     const [flavor, setFlavor] = useState('');
-    let random: string = '';
+    let randomMon: string = '';
 
     function randomId() {
         let random = Math.round(Math.random() * 905)
@@ -44,8 +44,8 @@ function Mon() {
     }
 
     function randomSearch() {
-        let random = randomId();
-        getData(random, true);
+        randomMon = randomId();
+        getData(randomMon, true);
     }
 
     function getValue(id: string) {
@@ -129,7 +129,7 @@ function Mon() {
         setMove3(moves3);
         assignMoves(moves3, "3");
         if (isRandom === true) {
-            getData1(random)
+            getData1(randomMon)
         }
         else {
             getData1(getValue("name")!);
