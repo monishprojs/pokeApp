@@ -53,7 +53,7 @@ function Mon() {
     }
 
     function getData(mon: string) {
-        fetch("https://pokeapi.co/api/v2/pokemon/" + mon)
+        fetch("https://pokeapi.co/api/v2/pokemon/" + mon + "/")
             .then((response) => response.json())
             .then((data) => {
                 assignValues(data)
@@ -121,15 +121,15 @@ function Mon() {
 
         let moves1 = data.moves[array[1]].move.name
         setMove1(moves1);
-        assignMoves(moves0, "1");
+        assignMoves(moves1, "1");
 
         let moves2 = data.moves[array[2]].move.name
         setMove2(moves2);
-        assignMoves(moves0, "2");
+        assignMoves(moves2, "2");
 
         let moves3 = data.moves[array[3]].move.name
         setMove3(moves3);
-        assignMoves(moves0, "3");
+        assignMoves(moves3, "3");
 
         getData1(getValue("name")!);
     }
