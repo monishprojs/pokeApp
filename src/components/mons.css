@@ -13,8 +13,9 @@ body {
     color: white;
     width: 50vw;
     height: 70vh;
+    min-height: fit-content;
     border-style: solid;
-    border-radius: 1px;
+    border-radius: 80px;
     border-color: black;
 }
 
@@ -23,7 +24,6 @@ body {
     border-radius: 1px;
     border-color: black;
     width: fit-content;
-    display: none;
     font-family: Miltonian;
     padding: 5px;
 }
@@ -31,4 +31,5 @@ body {
 .row {
     display: flex;
     justify-content: space-evenly;
+    margin-top: 2%;
 }

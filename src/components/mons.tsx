@@ -145,6 +145,10 @@ function Mon() {
         }
     }
 
+    function assignMoves() {
+
+    }
+
     useEffect(() => {
         randomSearch();
     }, [])
@@ -177,18 +181,23 @@ function Mon() {
                     {flavor}
                 </div>
                 <div className="row">
-                    <div id="move0">
+                    <div className='type'>
+                        Potential Moveset
+                    </div>
+                </div>
+                <div className="row">
+                    <div className='type' id="move0">
                         {move0}
                     </div>
-                    <div id="move1">
+                    <div className='type' id="move1">
                         {move1}
                     </div>
                 </div>
                 <div className="row">
-                    <div id="move2">
+                    <div className='type' id="move2">
                         {move2}
                     </div>
-                    <div id="move3">
+                    <div className='type' id="move3">
                         {move3}
                     </div>
                 </div>
