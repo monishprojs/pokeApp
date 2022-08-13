@@ -116,6 +116,7 @@ function Mon() {
             }
         }
         let moves0 = data.moves[array[0]].move.name
+        assignMoves(moves0, "1");
         setMove0(moves0);
 
         let moves1 = data.moves[array[1]].move.name
@@ -145,8 +146,21 @@ function Mon() {
         }
     }
 
-    function assignMoves() {
+    function assignMoves(move: string, section: string) {
+        fetch("https://pokeapi.co/api/v2/move/" + move + "/")
+            .then((response) => response.json())
+            .then((data) => {
+                assignBackground(data, section)
+            })
+    }
 
+    function assignBackground(data: any, section: string) {
+        if (section === "0") {
+            let background = document.getElementById("move0");
+            if (background != null) {
+                background.style.backgroundColor = colorsMap.get(data.type.name)!
+            }
+        }
     }
 
     useEffect(() => {
