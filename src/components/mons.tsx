@@ -43,7 +43,7 @@ function Mon() {
      * @returns a random mon Id
      */
     function randomId() {
-        let random = Math.round(Math.random() * 905);
+        let random = Math.round(Math.random() * 898);
         return random as unknown as string;
     }
 
@@ -71,7 +71,7 @@ function Mon() {
      * 
      * @param mon mon name or id to be searched
      * @param isRandom whether or not the search is random
-     * gets api data on mon
+     * makes api call for mon's general data
      */
     function getData(mon: string, isRandom: boolean) {
         fetch("https://pokeapi.co/api/v2/pokemon/" + mon + "/")
@@ -84,7 +84,7 @@ function Mon() {
     /**
      * 
      * @param mon mon name or id to be searched
-     * returns info on mon species
+     * make api call for mon species data
      */
     function getDataSpecies(mon: string) {
         fetch("https://pokeapi.co/api/v2/pokemon-species/" + mon + "/")
