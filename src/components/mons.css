@@ -32,7 +32,7 @@ body {
 
 .type {
     border-style: solid;
-    border-radius: 1px;
+    border-radius: 8px;
     border-color: black;
     width: fit-content;
     font-family: Miltonian;
@@ -41,6 +41,14 @@ body {
     height: 3vh;
     font-size: 1rem;
     margin-bottom: 2%;
+}
+
+.small {
+    width: 5vw;
+}
+
+.space {
+    margin-left: 5%;
 }
 
 .desc {
@@ -59,6 +67,11 @@ body {
 }
 
 @media(max-width: 480px) {
+    .img {
+        width: 40vw;
+        height: auto;
+    }
+
     .info {
         margin-top: 5vh;
         padding-top: 20%;
@@ -71,9 +84,20 @@ body {
         font-size: 1rem;
         margin-bottom: 4%;
     }
+
+    .cap {
+        border: none;
+        font-size: 1.25rem;
+        margin-bottom: 8%;
+    }
 }
 
 @media(min-width: 480px) and (max-width: 844px) {
+    .img {
+        width: 20vw;
+        height: auto;
+    }
+
     .info {
         margin-top: 5vh;
         padding-top: 2%;
@@ -86,5 +110,11 @@ body {
         height: 3vw;
         font-size: 1rem;
         margin-bottom: 1%;
+    }
+
+    .cap {
+        border: none;
+        font-size: 1.25rem;
+        margin-bottom: 2%;
     }
 }

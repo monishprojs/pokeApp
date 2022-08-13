@@ -26,7 +26,9 @@ function Mon() {
 
     const [name, setName] = useState('');
     const [imgLink, setImgLink] = useState('');
-    const [shinyLink, setShinyLink] = useState('');
+    const [height, setHeight] = useState('');
+    const [weight, setWeight] = useState('');
+    const [ability, setAbility] = useState('');
     const [move0, setMove0] = useState('');
     const [move1, setMove1] = useState('');
     const [move2, setMove2] = useState('');
@@ -75,6 +77,9 @@ function Mon() {
         setName(data.species.name)
         setImgLink(data['sprites']['other']['home']['front_default'])
         setType0(data.types[0].type.name)
+        setHeight(data.height)
+        setWeight(data.weight)
+        setAbility(data.abilities[0].ability.name)
         let body = document.querySelector("body");
         let info = document.getElementById("info")
         let type0 = document.getElementById("type0")
@@ -187,7 +192,6 @@ function Mon() {
     return (
         <div className='container'>
             <div className='info' id='info'>
-
                 <div>
                     <input type="text" id="name" />
                     <button onClick={() => getData(getValue("name")!)}>Search</button>
@@ -198,12 +202,24 @@ function Mon() {
                 </div>
                 <div className='name'>
                     {name}
+                    <br />
+                    <div className='row'>
+                        <div>
+                            Height: {height}'
+                        </div>
+                        <div>
+                            Weight: {weight} lbs
+                        </div>
+                        <div>
+                            Ability: {ability}
+                        </div>
+                    </div>
                 </div>
-                <div className='type' id="type0">
+                <div className='type small' id="type0">
                     {type0}
                 </div>
 
-                <div className='type' id="type1">
+                <div className='type small space' id="type1">
                     {type1}
                 </div>
                 <div className='desc'>
