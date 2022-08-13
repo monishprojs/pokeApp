@@ -194,6 +194,7 @@ function Mon() {
     return (
         <div className='container'>
             <div className='info' id='info'>
+
                 <div>
                     <input type="text" id="name" />
                     <button onClick={() => getData(getValue("name")!)}>Search</button>
@@ -211,16 +212,16 @@ function Mon() {
                 <div className='type' id="type0">
                     {type0}
                 </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                 <div className='type' id="type1">
                     {type1}
                 </div>
-                <div>
+                <div className='desc'>
                     {flavor}
                 </div>
                 <div className="row">
                     <div className='type cap'>
-                        Potential Moveset
+                        Potential Moveset:
                     </div>
                 </div>
                 <div className="row">
