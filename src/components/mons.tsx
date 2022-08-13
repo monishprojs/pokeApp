@@ -26,6 +26,7 @@ function Mon() {
 
     const [name, setName] = useState('');
     const [imgLink, setImgLink] = useState('');
+    const [shinyLink, setShinyLink] = useState('');
     const [move0, setMove0] = useState('');
     const [move1, setMove1] = useState('');
     const [move2, setMove2] = useState('');
@@ -33,6 +34,7 @@ function Mon() {
     const [type0, setType0] = useState('');
     const [type1, setType1] = useState('');
     const [flavor, setFlavor] = useState('');
+
 
     function randomId() {
         let random = Math.round(Math.random() * 905)
@@ -71,7 +73,7 @@ function Mon() {
 
     function assignValues(data: any) {
         setName(data.species.name)
-        setImgLink(data['sprites']['other']['official-artwork']['front_default'])
+        setImgLink(data['sprites']['other']['home']['front_default'])
         setType0(data.types[0].type.name)
         let body = document.querySelector("body");
         let info = document.getElementById("info")
@@ -191,8 +193,8 @@ function Mon() {
                     <button onClick={() => getData(getValue("name")!)}>Search</button>
                     <button onClick={() => randomSearch()}>Random</button>
                 </div>
-                <div className='img'>
-                    <img src={imgLink} alt="" />
+                <div>
+                    <img className='img' src={imgLink} alt="" />
                 </div>
                 <div className='name'>
                     {name}
