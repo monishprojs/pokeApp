@@ -41,8 +41,9 @@ function Mon() {
     }
 
     function randomSearch() {
-        getData(randomId()!);
-        getData1(randomId()!);
+        let random: string = randomId();
+        getData(random);
+        getData1(random);
     }
 
     function getValue(id: string) {
@@ -201,10 +202,10 @@ function Mon() {
                 <div>
                     {isShiny}
                 </div>
-                <div>
+                <div className='img'>
                     <img src={imgLink} alt="" />
                 </div>
-                <div>
+                <div className='name'>
                     {name}
                 </div>
                 <div className='type' id="type0">
@@ -218,7 +219,7 @@ function Mon() {
                     {flavor}
                 </div>
                 <div className="row">
-                    <div className='type'>
+                    <div className='type cap'>
                         Potential Moveset
                     </div>
                 </div>
