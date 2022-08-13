@@ -116,17 +116,21 @@ function Mon() {
             }
         }
         let moves0 = data.moves[array[0]].move.name
-        assignMoves(moves0, "1");
+        assignMoves(moves0, "0");
         setMove0(moves0);
 
         let moves1 = data.moves[array[1]].move.name
         setMove1(moves1);
+        assignMoves(moves0, "1");
 
         let moves2 = data.moves[array[2]].move.name
         setMove2(moves2);
+        assignMoves(moves0, "2");
 
         let moves3 = data.moves[array[3]].move.name
         setMove3(moves3);
+        assignMoves(moves0, "3");
+
         getData1(getValue("name")!);
     }
 
@@ -150,6 +154,7 @@ function Mon() {
         fetch("https://pokeapi.co/api/v2/move/" + move + "/")
             .then((response) => response.json())
             .then((data) => {
+                console.log(data)
                 assignBackground(data, section)
             })
     }
@@ -157,6 +162,24 @@ function Mon() {
     function assignBackground(data: any, section: string) {
         if (section === "0") {
             let background = document.getElementById("move0");
+            if (background != null) {
+                background.style.backgroundColor = colorsMap.get(data.type.name)!
+            }
+        }
+        else if (section === "1") {
+            let background = document.getElementById("move1");
+            if (background != null) {
+                background.style.backgroundColor = colorsMap.get(data.type.name)!
+            }
+        }
+        else if (section === "2") {
+            let background = document.getElementById("move2");
+            if (background != null) {
+                background.style.backgroundColor = colorsMap.get(data.type.name)!
+            }
+        }
+        else if (section === "3") {
+            let background = document.getElementById("move3");
             if (background != null) {
                 background.style.backgroundColor = colorsMap.get(data.type.name)!
             }
