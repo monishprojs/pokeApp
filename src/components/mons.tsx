@@ -39,8 +39,8 @@ function Mon() {
     let randomMon: string = '';
 
     function randomId() {
-        let random = Math.round(Math.random() * 905)
-        return random as unknown as string
+        let random = Math.round(Math.random() * 905);
+        return random as unknown as string;
     }
 
     function randomSearch() {
@@ -71,25 +71,29 @@ function Mon() {
             })
     }
 
+    function upperString(lower: string) {
+        return lower.charAt(0).toUpperCase() + lower.slice(1);
+    }
+
 
     function assignValues(data: any, isRandom: boolean) {
-        setName(data.species.name)
-        setImgLink(data['sprites']['other']['home']['front_default'])
-        setType0(data.types[0].type.name)
-        setHeight(data.height)
-        setWeight(data.weight)
-        setAbility(data.abilities[0].ability.name)
+        setName(upperString(data.species.name));
+        setImgLink(data['sprites']['other']['home']['front_default']);
+        setType0(data.types[0].type.name);
+        setHeight(data.height);
+        setWeight(data.weight);
+        setAbility(upperString(data.abilities[0].ability.name));
         let body = document.querySelector("body");
-        let info = document.getElementById("info")
-        let type0 = document.getElementById("type0")
-        let type1 = document.getElementById("type1")
+        let info = document.getElementById("info");
+        let type0 = document.getElementById("type0");
+        let type1 = document.getElementById("type1");
         if (body != null && type0 != null) {
             body.style.backgroundColor = colorsMap.get(data.types[0].type.name)!;
             type0.style.display = "inline-block";
             type0.style.backgroundColor = colorsMap.get(data.types[0].type.name)!;
         }
         if (data.types.length === 2) {
-            setType1(data.types[1].type.name)
+            setType1(data.types[1].type.name);
             if (info != null && type1 != null) {
                 info.style.backgroundColor = colorsMap.get(data.types[1].type.name)!;
                 type1.style.display = "inline-block";
@@ -104,8 +108,8 @@ function Mon() {
             }
         }
         let length = data.moves.length;
-        let array = [0]
-        let i = 0
+        let array = [0];
+        let i = 0;
         while (i < 4) {
             let placeholder = Math.round(Math.random() * length);
             if (!array.includes(placeholder)) {
@@ -113,23 +117,23 @@ function Mon() {
                 i++;
             }
         }
-        let moves0 = data.moves[array[0]].move.name
+        let moves0 = data.moves[array[0]].move.name;
         assignMoves(moves0, "0");
         setMove0(moves0);
 
-        let moves1 = data.moves[array[1]].move.name
+        let moves1 = data.moves[array[1]].move.name;
         setMove1(moves1);
         assignMoves(moves1, "1");
 
-        let moves2 = data.moves[array[2]].move.name
+        let moves2 = data.moves[array[2]].move.name;
         setMove2(moves2);
         assignMoves(moves2, "2");
 
-        let moves3 = data.moves[array[3]].move.name
+        let moves3 = data.moves[array[3]].move.name;
         setMove3(moves3);
         assignMoves(moves3, "3");
         if (isRandom === true) {
-            getData1(randomMon)
+            getData1(randomMon);
         }
         else {
             getData1(getValue("name")!);
@@ -142,12 +146,12 @@ function Mon() {
         let i: number = 0;
         while (isEn === false) {
             if (data.flavor_text_entries[i].language.name === "en") {
-                setFlavor(data.flavor_text_entries[i].flavor_text)
+                setFlavor(data.flavor_text_entries[i].flavor_text);
                 isEn = true;
             }
             else {
-                isEn = false
-                i++
+                isEn = false;
+                i++;
             }
         }
     }
@@ -156,7 +160,6 @@ function Mon() {
         fetch("https://pokeapi.co/api/v2/move/" + move + "/")
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 assignBackground(data, section)
             })
     }
@@ -165,25 +168,25 @@ function Mon() {
         if (section === "0") {
             let background = document.getElementById("move0");
             if (background != null) {
-                background.style.backgroundColor = colorsMap.get(data.type.name)!
+                background.style.backgroundColor = colorsMap.get(data.type.name)!;
             }
         }
         else if (section === "1") {
             let background = document.getElementById("move1");
             if (background != null) {
-                background.style.backgroundColor = colorsMap.get(data.type.name)!
+                background.style.backgroundColor = colorsMap.get(data.type.name)!;
             }
         }
         else if (section === "2") {
             let background = document.getElementById("move2");
             if (background != null) {
-                background.style.backgroundColor = colorsMap.get(data.type.name)!
+                background.style.backgroundColor = colorsMap.get(data.type.name)!;
             }
         }
         else if (section === "3") {
             let background = document.getElementById("move3");
             if (background != null) {
-                background.style.backgroundColor = colorsMap.get(data.type.name)!
+                background.style.backgroundColor = colorsMap.get(data.type.name)!;
             }
         }
     }
@@ -194,7 +197,13 @@ function Mon() {
 
     return (
         <div className='container'>
+
             <div className='info' id='info'>
+                <div className='title'>
+                    The Mon Dictionary:
+                    <br />
+                    Fing Out Your Favorite Mon's Info
+                </div>
                 <div>
                     <input type="text" id="name" />
                     <button onClick={() => getData(getValue("name")!, false)}>Search</button>
