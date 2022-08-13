@@ -9,14 +9,14 @@ body {
 }
 
 .info {
-    margin-top: 5vh;
+    margin-top: 2.5vh;
     padding-top: 1%;
     padding-left: 2%;
     padding-right: 2%;
     text-align: center;
     color: white;
     width: 50vw;
-    height: 90vh;
+    height: 95vh;
     min-height: fit-content;
     border-style: solid;
     border-radius: 80px;
@@ -77,10 +77,10 @@ body {
     }
 
     .info {
-        margin-top: 5vh;
-        padding-top: 20%;
+        margin-top: 2vh;
+        padding-top: 10%;
         width: 90vw;
-        height: 80vh;
+        height: 90vh;
     }
 
     .type {
@@ -94,6 +94,7 @@ body {
         font-size: 1.25rem;
         margin-bottom: 8%;
     }
+
 }
 
 @media(min-width: 480px) and (max-width: 844px) {

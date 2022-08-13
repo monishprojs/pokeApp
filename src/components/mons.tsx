@@ -24,8 +24,10 @@ function Mon() {
         ["fairy", '#D685AD'],
     ]);
 
+    //start of react states used to present info that changes dynamically
     const [name, setName] = useState('');
     const [imgLink, setImgLink] = useState('');
+    const [isShiny, setShiny] = useState('');
     const [height, setHeight] = useState('');
     const [weight, setWeight] = useState('');
     const [ability, setAbility] = useState('');
@@ -36,7 +38,10 @@ function Mon() {
     const [type0, setType0] = useState('');
     const [type1, setType1] = useState('');
     const [flavor, setFlavor] = useState('');
-    let randomMon: string = '';
+    //end of react states used to present info that changes dynamically
+
+
+    let randomMon: string = ''; //variable used to store id of random pokemon in a random search
 
     /**
      * 
@@ -111,7 +116,14 @@ function Mon() {
      */
     function assignValues(data: any, isRandom: boolean) {
         setName(upperString(data.species.name));
-        setImgLink(data['sprites']['other']['home']['front_default']);
+        if (Math.round(Math.random() * 5) !== 1) {
+            setImgLink(data['sprites']['other']['home']['front_default']);
+            setShiny("");
+        }
+        else {
+            setImgLink(data['sprites']['other']['home']['front_shiny']);
+            setShiny("You found a shiny!");
+        }
         setType0(data.types[0].type.name);
         setHeight(data.height);
         setWeight(data.weight);
@@ -262,6 +274,9 @@ function Mon() {
                     <button onClick={() => getData(getValue("name")!, false)}>Search</button>
                     <button onClick={() => randomSearch()}>Random</button>
                 </div>
+                <div className='desc'>
+                    {isShiny}
+                </div>
                 <div>
                     <img className='img' src={imgLink} alt="" />
                 </div>
@@ -316,7 +331,5 @@ function Mon() {
     );
 
 }
-
-
 
 export default Mon;
