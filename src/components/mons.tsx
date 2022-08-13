@@ -38,16 +38,28 @@ function Mon() {
     const [flavor, setFlavor] = useState('');
     let randomMon: string = '';
 
+    /**
+     * 
+     * @returns a random mon Id
+     */
     function randomId() {
         let random = Math.round(Math.random() * 905);
         return random as unknown as string;
     }
 
+    /**
+     * starts the search for a random mon's info
+     */
     function randomSearch() {
         randomMon = randomId();
         getData(randomMon, true);
     }
 
+    /**
+     * 
+     * @param id id of input
+     * @returns value of input
+     */
     function getValue(id: string) {
         let element = document.getElementById(id) as HTMLInputElement | null;
         if (element != null) {
@@ -55,6 +67,12 @@ function Mon() {
         }
     }
 
+    /**
+     * 
+     * @param mon mon name or id to be searched
+     * @param isRandom whether or not the search is random
+     * gets api data on mon
+     */
     function getData(mon: string, isRandom: boolean) {
         fetch("https://pokeapi.co/api/v2/pokemon/" + mon + "/")
             .then((response) => response.json())
@@ -63,19 +81,34 @@ function Mon() {
             })
     }
 
-    function getData1(mon: string) {
+    /**
+     * 
+     * @param mon mon name or id to be searched
+     * returns info on mon species
+     */
+    function getDataSpecies(mon: string) {
         fetch("https://pokeapi.co/api/v2/pokemon-species/" + mon + "/")
             .then((response) => response.json())
             .then((data) => {
-                assignValues1(data)
+                assignValuesSpecies(data)
             })
     }
 
+    /**
+     * 
+     * @param lower string in lowercase
+     * @returns string with first letter as uppercase
+     */
     function upperString(lower: string) {
         return lower.charAt(0).toUpperCase() + lower.slice(1);
     }
 
-
+    /**
+     * 
+     * @param data api data
+     * @param isRandom whether or not search is random
+     * assigns values to different react states in order to display info in html
+     */
     function assignValues(data: any, isRandom: boolean) {
         setName(upperString(data.species.name));
         setImgLink(data['sprites']['other']['home']['front_default']);
@@ -133,15 +166,19 @@ function Mon() {
         setMove3(moves3);
         assignMoves(moves3, "3");
         if (isRandom === true) {
-            getData1(randomMon);
+            getDataSpecies(randomMon);
         }
         else {
-            getData1(getValue("name")!);
+            getDataSpecies(getValue("name")!);
         }
     }
 
-
-    function assignValues1(data: any) {
+    /**
+     * 
+     * @param data data from api call
+     * assigns species description to react state
+     */
+    function assignValuesSpecies(data: any) {
         let isEn = false;
         let i: number = 0;
         while (isEn === false) {
@@ -156,6 +193,12 @@ function Mon() {
         }
     }
 
+    /**
+     * 
+     * @param move move to be searched
+     * @param section section (div) that move resides in in the html
+     * makes api call on the move
+     */
     function assignMoves(move: string, section: string) {
         fetch("https://pokeapi.co/api/v2/move/" + move + "/")
             .then((response) => response.json())
@@ -164,6 +207,13 @@ function Mon() {
             })
     }
 
+    /**
+     * 
+     * @param data data from move api call
+     * @param section section (div) that move resides in in the html
+     * makes api call on the move
+     * assigns background color to move based on type
+     */
     function assignBackground(data: any, section: string) {
         if (section === "0") {
             let background = document.getElementById("move0");
@@ -191,6 +241,9 @@ function Mon() {
         }
     }
 
+    /**
+     * executes a random search on page load
+     */
     useEffect(() => {
         randomSearch();
     }, [])
@@ -202,7 +255,7 @@ function Mon() {
                 <div className='title'>
                     The Mon Dictionary:
                     <br />
-                    Fing Out Your Favorite Mon's Info
+                    Find Out Your Favorite Mon's Info
                 </div>
                 <div>
                     <input type="text" id="name" />
