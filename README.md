@@ -1,3 +1,6 @@
+Desktop Screenshot:
+![alt text](https://github.com/monishprojs/pokeApp/blob/f4e32f6a0b11a6fa7a0bafc89aacbaa2d4a527d9/pokedesktop.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
