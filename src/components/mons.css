@@ -9,18 +9,36 @@ body {
 }
 
 .info {
-    margin-top: 2.5vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     padding-top: 1%;
-    padding-left: 2%;
-    padding-right: 2%;
     text-align: center;
     color: white;
     width: 50vw;
-    height: 95vh;
+    height: 98vh;
     min-height: fit-content;
     border-style: solid;
     border-radius: 80px;
     border-color: black;
+}
+
+.input {
+    font-family: Miltonian;
+    width: 20vh;
+    height: 3vh;
+}
+
+.search {
+    background-color: red;
+    color: white;
+    border-color: white;
+    font-family: Miltonian;
+    width: 10vh;
+    height: 4vh;
+}
+
+.search:hover {
+    background-color: black;
 }
 
 .img {
@@ -57,6 +75,9 @@ body {
 
 .desc {
     font-size: 1.25rem;
+    max-width: 80%;
+    margin-top: 2%;
+    margin-left: 10%;
 }
 
 .cap {
@@ -77,10 +98,10 @@ body {
     }
 
     .info {
-        margin-top: 2vh;
+        margin-top: 0.2vh;
         padding-top: 10%;
         width: 90vw;
-        height: 90vh;
+        height: 95vh;
     }
 
     .type {
@@ -95,6 +116,9 @@ body {
         margin-bottom: 8%;
     }
 
+    .phy {
+        font-size: 0.75em;
+    }
 }
 
 @media(min-width: 480px) and (max-width: 844px) {
@@ -108,6 +132,16 @@ body {
         padding-top: 2%;
         width: 90vw;
         height: fit-content;
+    }
+
+    .input {
+        width: 20vw;
+        height: 3vw;
+    }
+
+    .search {
+        width: 10vw;
+        height: 4vw;
     }
 
     .type {

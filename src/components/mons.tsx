@@ -270,9 +270,9 @@ function Mon() {
                     Find Out Your Favorite Mon's Info
                 </div>
                 <div>
-                    <input type="text" id="name" />
-                    <button onClick={() => getData(getValue("name")!, false)}>Search</button>
-                    <button onClick={() => randomSearch()}>Random</button>
+                    <input className='input' type="text" id="name" />
+                    <button className='search' onClick={() => getData(getValue("name")!, false)}>Search</button>
+                    <button className='search' onClick={() => randomSearch()}>Random</button>
                 </div>
                 <div className='desc'>
                     {isShiny}
@@ -284,21 +284,21 @@ function Mon() {
                     {name}
                     <br />
                     <div className='row'>
-                        <div>
+                        <div className='phy'>
                             Height: {height}'
                         </div>
-                        <div>
+                        <div className='phy'>
                             Weight: {weight} lbs
                         </div>
-                        <div>
+                        <div className='phy'>
                             Ability: {ability}
                         </div>
                     </div>
                 </div>
+                <p className='cap'>Type(s):</p>
                 <div className='type small' id="type0">
                     {type0}
                 </div>
-
                 <div className='type small space' id="type1">
                     {type1}
                 </div>
@@ -306,7 +306,7 @@ function Mon() {
                     {flavor}
                 </div>
                 <div className="row">
-                    <div className='type cap'>
+                    <div className='cap'>
                         Potential Moveset:
                     </div>
                 </div>
